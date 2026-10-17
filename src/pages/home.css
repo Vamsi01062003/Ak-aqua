@@ -1,0 +1,186 @@
+.home-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #020807;
+}
+
+.hero-exact {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #020807;
+  line-height: 0;
+}
+
+.hero-background {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Shared transparent navigation overlays */
+.hero-nav-overlay {
+  position: absolute;
+  display: block;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  cursor: pointer;
+  z-index: 10;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Navigation positions — adjust after testing against your image */
+.hero-nav-home {
+  top: 3.2%;
+  left: 39%;
+  width: 4.5%;
+  height: 4%;
+}
+
+.hero-nav-collection {
+  top: 3.2%;
+  left: 44%;
+  width: 7.5%;
+  height: 4%;
+}
+
+.hero-nav-plants {
+  top: 3.2%;
+  left: 51.5%;
+  width: 10%;
+  height: 4%;
+}
+
+.hero-nav-about {
+  top: 3.2%;
+  left: 62%;
+  width: 4.5%;
+  height: 4%;
+}
+
+.hero-nav-contact {
+  top: 3.2%;
+  left: 67%;
+  width: 6%;
+  height: 4%;
+}
+
+/* Cart icon */
+.hero-nav-cart {
+  top: 3%;
+  right: 5.5%;
+  width: 3.5%;
+  height: 5%;
+}
+
+/*
+  Explore Collection overlays the existing artwork.
+  Visible text is already part of the background image.
+*/
+.hero-explore-button {
+  position: absolute;
+  left: 6.1%;
+  top: 55.2%;
+  width: 17.3%;
+  height: 5.8%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+
+  color: transparent;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.hero-explore-button span {
+  opacity: 0;
+}
+
+.hero-explore-button:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* Scroll Down button overlays the existing artwork */
+.hero-scroll-down-button {
+  position: absolute;
+  left: 6.1%;
+  bottom: 4%;
+  width: 13%;
+  height: 5%;
+
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  cursor: pointer;
+  z-index: 10;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Keyboard accessibility */
+.hero-explore-button:focus-visible,
+.hero-nav-overlay:focus-visible,
+.hero-scroll-down-button:focus-visible {
+  outline: 2px solid #e8c66b;
+  outline-offset: 3px;
+}
+
+/* Tablet and mobile */
+@media (max-width: 768px) {
+  .hero-explore-button {
+    left: 6.1%;
+    top: 55.2%;
+    width: 28%;
+    height: 6.5%;
+  }
+
+  .hero-nav-home {
+    left: 34%;
+    width: 7%;
+  }
+
+  .hero-nav-collection {
+    left: 41%;
+    width: 12%;
+  }
+
+  .hero-nav-plants {
+    left: 53%;
+    width: 15%;
+  }
+
+  .hero-nav-about {
+    left: 68%;
+    width: 8%;
+  }
+
+  .hero-nav-contact {
+    left: 76%;
+    width: 10%;
+  }
+
+  .hero-nav-cart {
+    right: 2%;
+    width: 6%;
+  }
+
+  .hero-scroll-down-button {
+    left: 6.1%;
+    bottom: 3%;
+    width: 24%;
+    height: 5%;
+  }
+}
