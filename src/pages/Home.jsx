@@ -1,5 +1,5 @@
-import { useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useRef } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import Collection from "./Collection";
 import PlantsAccessories from "./Plants&Accessories";
@@ -15,6 +15,41 @@ export default function Home() {
   const contactRef = useRef(null);
 
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // Scroll to requested section from Navbar or external links
+  useEffect(() => {
+    const sectionId = location.state?.scrollToSection;
+    if (!sectionId) return;
+
+    const sectionRefs = {
+      collection: collectionRef,
+      "fish-collection": collectionRef,
+      "plants-accessories": plantsRef,
+      "plants-accessories-section": plantsRef,
+      about: aboutRef,
+      "about-section": aboutRef,
+      contact: contactRef,
+      "contact-section": contactRef,
+    };
+
+    const targetRef = sectionRefs[sectionId];
+    if (!targetRef) return;
+
+    const timer = window.setTimeout(() => {
+      targetRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+
+      navigate(location.pathname, {
+        replace: true,
+        state: null,
+      });
+    }, 150);
+
+    return () => window.clearTimeout(timer);
+  }, [location, navigate]);
 
   const scrollToCollection = () => {
     collectionRef.current?.scrollIntoView({
@@ -23,100 +58,67 @@ export default function Home() {
     });
   };
 
-  const goToContact = () => {
+  const scrollToContact = () => {
     contactRef.current?.scrollIntoView({
       behavior: "smooth",
       block: "start",
     });
   };
 
-  const goToCollection = () => navigate("/collection");
-  const goToAbout = () => navigate("/about");
-  const goToCart = () => navigate("/cart");
-  const goToPlants = () => navigate("/plants-accessories");
-
   return (
     <main className="home-page">
-      {/* HERO */}
+      {/* Hero section with clean background and fully styled visible buttons */}
       <section
         id="home"
         className="hero-exact"
-        aria-label="AK Aqua Telugu"
+        aria-label="AK Aqua Telugu homepage"
       >
         <img
           src="/home_background.png"
-          alt="AK Aqua Telugu aquarium hero"
+          alt="AK Aqua Telugu aquarium"
           className="hero-background"
+          draggable="false"
         />
 
+        {/* Fully Styled Explore Collection Button */}
         <button
           type="button"
-          className="hero-nav-overlay hero-nav-home"
-          onClick={() => navigate("/")}
-          aria-label="Home"
-          title="Home"
-        />
-
-        <button
-          type="button"
-          className="hero-nav-overlay hero-nav-collection"
-          onClick={goToCollection}
-          aria-label="Collection"
-          title="Collection"
-        />
-
-        <button
-          type="button"
-          className="hero-nav-overlay hero-nav-plants"
-          onClick={goToPlants}
-          aria-label="Plants and Accessories"
-          title="Plants & Accessories"
-        />
-
-        <button
-          type="button"
-          className="hero-nav-overlay hero-nav-about"
-          onClick={goToAbout}
-          aria-label="About"
-          title="About"
-        />
-
-        <button
-          type="button"
-          className="hero-nav-overlay hero-nav-contact"
-          onClick={goToContact}
-          aria-label="Contact"
-          title="Contact"
-        />
-
-        <button
-          type="button"
-          className="hero-nav-overlay hero-nav-cart"
-          onClick={goToCart}
-          aria-label="Shopping cart"
-          title="Cart"
-        />
-
-        <button
-          type="button"
-          className="hero-explore-button"
+          className="hero-explore-btn"
           onClick={scrollToCollection}
           aria-label="Explore Collection"
         >
           <span>Explore Collection</span>
-          <span className="hero-explore-arrow">→</span>
+          <span className="hero-explore-arrow" aria-hidden="true">
+            →
+          </span>
         </button>
 
+        {/* Fully Styled Scroll Down Button (matches background circle arrow) */}
         <button
           type="button"
-          className="hero-scroll-down-button"
-          onClick={scrollToCollection}
-          aria-label="Scroll to Collection"
-          title="Scroll Down"
-        />
+          className="hero-scroll-btn"
+          onClick={scrollToContact}
+          aria-label="Scroll down to contact"
+          title="Scroll to Contact"
+        >
+          <span className="hero-scroll-icon">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M12 5v14M19 12l-7 7-7-7" />
+            </svg>
+          </span>
+        </button>
       </section>
 
-      {/* COLLECTION */}
+      {/* Fish collection */}
       <section
         ref={collectionRef}
         id="fish-collection"
@@ -125,7 +127,7 @@ export default function Home() {
         <Collection />
       </section>
 
-      {/* PLANTS & ACCESSORIES */}
+      {/* Plants and accessories */}
       <section
         ref={plantsRef}
         id="plants-accessories-section"
@@ -134,16 +136,12 @@ export default function Home() {
         <PlantsAccessories />
       </section>
 
-      {/* ABOUT */}
-      <section
-        ref={aboutRef}
-        id="about-section"
-        className="home-visit-section"
-      >
+      {/* About */}
+      <section ref={aboutRef} id="about-section" className="home-visit-section">
         <About />
       </section>
 
-      {/* CONTACT */}
+      {/* Contact */}
       <section
         ref={contactRef}
         id="contact-section"

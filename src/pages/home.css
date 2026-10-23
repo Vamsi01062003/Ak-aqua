@@ -1,3 +1,7 @@
+/* =========================================================
+   AK AQUA TELUGU — STYLED VISIBLE HERO BUTTONS
+   ========================================================= */
+
 .home-page {
   width: 100%;
   min-height: 100vh;
@@ -17,170 +21,154 @@
   width: 100%;
   height: auto;
   max-width: none;
+  margin: 0;
+  padding: 0;
   user-select: none;
   -webkit-user-drag: none;
+  pointer-events: none;
 }
 
-/* Shared transparent navigation overlays */
-.hero-nav-overlay {
+/* Fully visible solid gold gradient pill button */
+.hero-explore-btn {
   position: absolute;
-  display: block;
-  padding: 0;
-  margin: 0;
-  background: transparent;
-  border: 0;
-  border-radius: 0;
+  left: 6%;
+  top: 55.22%;
+  z-index: 45;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  padding: 15px 26px;
+  box-sizing: border-box;
+
+  background: linear-gradient(135deg, #fbb03b 0%, #e89923 100%);
+  color: #1a1202;
+  border: 1px solid rgba(255, 235, 179, 0.45);
+  border-radius: 9999px;
+
+  font-family:
+    "DM Sans",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+  font-size: 16px;
+  font-weight: 750;
+  letter-spacing: -0.2px;
+  text-transform: uppercase;
+
   cursor: pointer;
-  z-index: 10;
+  outline: none;
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.4),
+    0 0 15px rgba(245, 158, 11, 0.25);
+
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    background 0.22s ease;
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Navigation positions — adjust after testing against your image */
-.hero-nav-home {
-  top: 3.2%;
-  left: 39%;
-  width: 4.5%;
-  height: 4%;
+.hero-explore-btn:hover {
+  transform: translateY(-2px) scale(1.025);
+  background: linear-gradient(135deg, #ffc059 0%, #f0a32d 100%);
+  box-shadow:
+    0 10px 28px rgba(0, 0, 0, 0.5),
+    0 0 24px rgba(245, 158, 11, 0.45);
 }
 
-.hero-nav-collection {
-  top: 3.2%;
-  left: 44%;
-  width: 7.5%;
-  height: 4%;
+.hero-explore-btn:active {
+  transform: translateY(0) scale(0.98);
 }
 
-.hero-nav-plants {
-  top: 3.2%;
-  left: 51.5%;
-  width: 10%;
-  height: 4%;
+.hero-explore-arrow {
+  display: inline-block;
+  font-size: 1.15em;
+  line-height: 1;
+  transition: transform 0.2s ease;
 }
 
-.hero-nav-about {
-  top: 3.2%;
-  left: 62%;
-  width: 4.5%;
-  height: 4%;
+.hero-explore-btn:hover .hero-explore-arrow {
+  transform: translateX(4px);
 }
 
-.hero-nav-contact {
-  top: 3.2%;
-  left: 67%;
-  width: 6%;
-  height: 4%;
-}
-
-/* Cart icon */
-.hero-nav-cart {
-  top: 3%;
-  right: 5.5%;
-  width: 3.5%;
-  height: 5%;
-}
-
-/*
-  Explore Collection overlays the existing artwork.
-  Visible text is already part of the background image.
-*/
-.hero-explore-button {
+/* Fully visible scroll down circular button matching background artwork */
+.hero-scroll-btn {
   position: absolute;
-  left: 6.1%;
-  top: 55.2%;
-  width: 17.3%;
-  height: 5.8%;
-
+  left: 6.26%;
+  top: 64.45%;
+  width: 42px;
+  height: 42px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-
-  padding: 0;
+  z-index: 30;
   background: transparent;
-  border: 0;
-  border-radius: 0;
-
-  color: transparent;
-  cursor: pointer;
-  z-index: 10;
-}
-
-.hero-explore-button span {
-  opacity: 0;
-}
-
-.hero-explore-button:hover {
-  background: rgba(255, 255, 255, 0.03);
-}
-
-/* Scroll Down button overlays the existing artwork */
-.hero-scroll-down-button {
-  position: absolute;
-  left: 6.1%;
-  bottom: 4%;
-  width: 13%;
-  height: 5%;
-
+  border: none;
   padding: 0;
-  background: transparent;
-  border: 0;
-  border-radius: 0;
   cursor: pointer;
-  z-index: 10;
+  outline: none;
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Keyboard accessibility */
-.hero-explore-button:focus-visible,
-.hero-nav-overlay:focus-visible,
-.hero-scroll-down-button:focus-visible {
-  outline: 2px solid #e8c66b;
-  outline-offset: 3px;
+.hero-scroll-icon {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(5, 16, 11, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 50%;
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
 }
 
-/* Tablet and mobile */
-@media (max-width: 768px) {
-  .hero-explore-button {
-    left: 6.1%;
-    top: 55.2%;
-    width: 28%;
-    height: 6.5%;
-  }
+.hero-scroll-btn:hover .hero-scroll-icon {
+  background: #c9a96a;
+  border-color: #c9a96a;
+  color: #07130f;
+  transform: translateY(2px);
+}
 
-  .hero-nav-home {
-    left: 34%;
-    width: 7%;
-  }
+/* Smooth section anchor offset */
+.home-collection-section,
+.home-plants-section,
+.home-visit-section,
+.home-contact-section {
+  scroll-margin-top: 70px;
+}
 
-  .hero-nav-collection {
-    left: 41%;
-    width: 12%;
+@media (max-width: 1024px) {
+  .hero-explore-btn {
+    left: 5.5%;
+    top: 53%;
+    padding: 11px 20px;
+    font-size: 12px;
   }
-
-  .hero-nav-plants {
-    left: 53%;
-    width: 15%;
+  .hero-scroll-btn {
+    left: 5.5%;
+    top: 63%;
   }
+}
 
-  .hero-nav-about {
-    left: 68%;
-    width: 8%;
+@media (max-width: 600px) {
+  .hero-explore-btn {
+    left: 6%;
+    top: 53.5%;
+    padding: 10px 16px;
+    font-size: 11px;
   }
-
-  .hero-nav-contact {
-    left: 76%;
-    width: 10%;
-  }
-
-  .hero-nav-cart {
-    right: 2%;
-    width: 6%;
-  }
-
-  .hero-scroll-down-button {
-    left: 6.1%;
-    bottom: 3%;
-    width: 24%;
-    height: 5%;
+  .hero-scroll-btn {
+    left: 6%;
+    top: 63.5%;
   }
 }

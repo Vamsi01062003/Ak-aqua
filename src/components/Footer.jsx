@@ -1,9 +1,29 @@
 import { Instagram, Youtube, ArrowUpRight, MessageCircle } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { site } from "../data/site";
 import Logo from "./Logo";
 
 export default function Footer() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isHomePage = location.pathname === "/" || location.pathname === "/home";
+
+  const handleFooterNav = (e, sectionId, route) => {
+    e.preventDefault();
+    if (isHomePage) {
+      if (sectionId === "home") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        return;
+      }
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+        return;
+      }
+    }
+    navigate(route, { state: { scrollToSection: sectionId } });
+  };
+
   return (
     <footer className="site-footer">
       <div className="container footer-main">
@@ -42,11 +62,11 @@ export default function Footer() {
         <div className="footer-links">
           <label>QUICK LINKS</label>
 
-          <Link to="/">Home</Link>
-          <Link to="/collection">Collection</Link>
-          <Link to="/plants-accessories">Plants & Accessories</Link>
-          <Link to="/about">About Us</Link>
-          <Link to="/contact">Contact</Link>
+          <a href="/" onClick={(e) => handleFooterNav(e, "home", "/")}>Home</a>
+          <a href="/collection" onClick={(e) => handleFooterNav(e, "fish-collection", "/")}>Collection</a>
+          <a href="/plants-accessories" onClick={(e) => handleFooterNav(e, "plants-accessories-section", "/")}>Plants & Accessories</a>
+          <a href="/about" onClick={(e) => handleFooterNav(e, "about-section", "/")}>About Us</a>
+          <a href="/contact" onClick={(e) => handleFooterNav(e, "contact-section", "/")}>Contact</a>
         </div>
 
         <div className="footer-contact">
@@ -65,11 +85,7 @@ export default function Footer() {
             <ArrowUpRight size={16} />
           </a>
 
-          <a
-            href={site.instagram}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href={site.instagram} target="_blank" rel="noopener noreferrer">
             <Instagram size={19} />
             <span>
               <small>INSTAGRAM</small>
@@ -81,9 +97,7 @@ export default function Footer() {
       </div>
 
       <div className="container foot-bottom">
-        <span>
-          © {new Date().getFullYear()} AK Aqua. All rights reserved.
-        </span>
+        <span>© {new Date().getFullYear()} AK Aqua. All rights reserved.</span>
 
         <span>Made for aquarium lovers.</span>
       </div>
