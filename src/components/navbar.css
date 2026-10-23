@@ -1,3 +1,12 @@
+/* Mobile fix: keep the navbar above, not over, the hero */
+@media (max-width: 960px) {
+  .ak-navbar {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+  }
+}
 /* ===== AK AQUA TELUGU — SOLID DARK NAVBAR COVERING TOP BAR ===== */
 
 .ak-navbar {
