@@ -172,3 +172,29 @@
     top: 63.5%;
   }
 }
+/* Mobile: start the hero below the navigation bar */
+@media (max-width: 960px) {
+  .hero-exact {
+    margin-top: 30px !important;
+  }
+}
+
+/* Reduce hero buttons on mobile only */
+@media screen and (max-width: 800px) {
+  .hero-exact .hero-explore-btn {
+    padding: 7px 12px !important;
+    font-size: 4px !important;
+    gap: 4px !important;
+  }
+
+  .hero-exact .hero-scroll-btn,
+  .hero-exact .hero-scroll-icon {
+    width: 1px !important;
+    height: 1px !important;
+  }
+
+  .hero-exact .hero-explore-arrow {
+    width: 1px !important;
+    height: 1px !important;
+  }
+}
